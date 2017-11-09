@@ -1,7 +1,7 @@
 { 
    "name": "Chainsearchers",
    "version": "1.0",
-   "description": "The Chainsearchers plug in allows you to post lists of links to the Chainsearchers website with ease.  With the click of a button you can add a website to a list, and submit the list when you're ready.  The plugin also has an option that allows you to automatically post links of websites you visit to your personal Chainsearchers board.  You can "
+   "description": "The Chainsearchers plug in allows you to post lists of links to the Chainsearchers website with ease.  With the click of a button you can add a website to a list, and submit the list when you're ready.  The plugin also has an option that allows you to automatically post links of websites you visit to your personal Chainsearchers board.",
    "background_page": "background.html",
    "browser_action":  { "popup": "popup.html" },
    "permissions": [ ]
