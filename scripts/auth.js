@@ -2,7 +2,7 @@ var authService = {
 
   clientId: "8af3c5b8a1315e4e04964b43f174cfa57eb2c9cfd19206abd03a5e886b71ecb4",
 
-  redirectUri: "https://modhaaboeefkahhijacfpadakhbigfjm.chromiumapp.org/popup.html",
+  redirectUri: "https://modhaaboeefkahhijacfpadakhbigfjm.chromiumapp.org/oauth2",
 
   grantEndPoint: function(){
     return "http://localhost:3000/oauth/authorize?client_id="+authService.clientId+"&response_type=code&redirect_uri="+authService.redirectUri;
@@ -10,13 +10,15 @@ var authService = {
 
   requestGrant: function(){
 
-    chrome.identity.launchWebAuthFlow({
+    chrome.identity.launchWebAuthFlow(
+      {
         'url': authService.grantEndPoint(),
-        'interactive': true}, function(redirect_url){
-      alert(redirect_url); 
+        'interactive': true
+      }, function(redirect_url){
+       
     /* Extract auth code from redirect_url */ 
-      var code = this.extractCode(redirect_url);
-    
+      var code = authService.extractCode(redirect_url);
+      alert(code);
       authService.getAccessToken(code);
     }); //launchWebAuthFlow ends here
   
