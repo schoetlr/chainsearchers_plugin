@@ -7,6 +7,7 @@ body {
   margin-top: 25px;
 }
 
+
 #title {
   margin-bottom: 40px;
 }
@@ -21,4 +22,26 @@ body {
 
 #post-wall-btn {
   margin-bottom: 15px;
+}
+
+
+#tags {
+  height: 80px;
+  overflow: scroll;
+}
+
+.tag {
+  cursor: pointer;
+}
+
+#selected-tags {
+  list-style: none;
+  margin-left: -40px;
+}
+.selected-tag {
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  margin-right: 3px;
+  cursor: pointer;
 }

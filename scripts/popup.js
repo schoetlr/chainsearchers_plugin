@@ -1,6 +1,9 @@
 $("document").ready(function(){
   //set up variables to hold the background services
   var background = chrome.extension.getBackgroundPage();
+  var currentView = chrome.extension.getViews({type:"popup"})[0].document;
+  $currentDoc = $(currentView);
+
   var authService = background.authService;
   var listService = background.listService;
   var Link = listService.Link;
@@ -8,7 +11,7 @@ $("document").ready(function(){
   var tagService = background.tagService;
 
   //populate the tag list
-  tagService.populateTags();
+  tagService.populateTags($currentDoc);
   
   //set up listeners
   $("#sign-in-btn").click(function(){
@@ -42,16 +45,40 @@ $("document").ready(function(){
     
   });
 
-  $("#list-title").change(function(){
+  $("#list-title").keyup(function(){
     listService.title = $("#list-title").val();
   });
 
-  $("#list-description").change(function(){
+  $("#list-description").keyup(function(){
     listService.description = $("#list-description").val();
   });
 
-  $("#wall-post").change(function(){
+  $("#wall-post").keyup(function(){
     listService.postToWall = $("#wall-post").val();
+  });
+
+  //filter the tag list
+  $("#tag-search").keyup(function(event){
+    $(".tag").each(function(i, tag){
+      var $tag = $(tag);
+      var search = $(event.target).val().toLowerCase();
+      var tagTxt = $tag.text().toLowerCase();
+      
+      if(tagTxt.includes(search)){
+        $tag.show();
+      } else {
+        $tag.hide();
+      };
+    });
+  });
+
+  //add to selected tags
+  $(".tag").click(function(event){
+    $tag = $(event.target).clone();
+    $tag.addClass("selected-tag");
+    $tag.removeClass("tag");
+    listService.selectedTags.push($tag);
+    $("#selected-tags").append($tag);
   });
   
 

@@ -17,13 +17,14 @@ var tagService = {
     });
   },
 
-  populateTags: function(){
-    tagService.tags.each(function(index, tag){
+  populateTags: function($view){
+    tagService.tags.forEach(function(tag){
       var $tag = $("<li></li>");
       $tag.text(tag.name);
-      $tag.data("server", { name: tag.name, id: tag.id });
-      $("#tags").append($tag);
-
+      $tag.addClass("tag");
+      $tag.attr("data-id", tag.id);
+      $view.find("#tags").append($tag);
+      
     });
   }
 
