@@ -5,12 +5,17 @@ $("document").ready(function(){
   var listService = background.listService;
   var Link = listService.Link;
 
+  var tagService = background.tagService;
+
+  //populate the tag list
+  tagService.populateTags();
+  
   //set up listeners
   $("#sign-in-btn").click(function(){
     authService.requestGrant();
   });
 
-  $("#post-list").click(function(){
+  $("#post-list-btn").click(function(){
     listService.postCurrentList();
   });
   
@@ -28,13 +33,25 @@ $("document").ready(function(){
     var url = undefined;
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
       var url = tabs[0].url;
-      var description = $("#wall-link-description");
+      var description = $("#wall-link-description").val();
       var link = Link(url, description);
 
       listService.postToWall(link);
 
     });
     
+  });
+
+  $("#list-title").change(function(){
+    listService.title = $("#list-title").val();
+  });
+
+  $("#list-description").change(function(){
+    listService.description = $("#list-description").val();
+  });
+
+  $("#wall-post").change(function(){
+    listService.postToWall = $("#wall-post").val();
   });
   
 

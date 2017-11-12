@@ -37,13 +37,24 @@
             <input class="form-control" id="list-description">
           </div>
 
-          <div class="form-group">
-            <label>Add links to your wall?</label>
-            <input class="form-check-input" type="checkbox" value="postToWall">
+          <div class="form-group" id="selected-tags">
+
           </div>
 
           <div class="form-group">
-            <button class="btn-success btn-md btn" id="post-list">Post List to Chainsearchers</button><br>
+            <input class="form-control" id="tag-search">
+            <ul id="tags">
+
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label>Add links to your wall?</label>
+            <input id="wall-post" class="form-check-input" type="checkbox" value=true>
+          </div>
+
+          <div class="form-group">
+            <button class="btn-success btn-md btn" id="post-list-btn">Post List to Chainsearchers</button><br>
             <p class="text-danger">Don't submit your list until you are done adding links</p>
           </div>
         </form>

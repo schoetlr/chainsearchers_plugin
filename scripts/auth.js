@@ -19,7 +19,7 @@ var authService = {
        
     /* Extract auth code from redirect_url */ 
       var code = authService.extractCode(redirect_url);
-      alert(code);
+
       authService.getAccessToken(code);
     }); //launchWebAuthFlow ends here
   
@@ -31,6 +31,8 @@ var authService = {
 
   //stores response from second request
   accessToken: undefined,
+  refreshToken: undefined,
+  expiresIn: undefined,
 
   getAccessToken: function(code){
     var data = {
@@ -46,7 +48,9 @@ var authService = {
       url: authService.tokenEndPoint,
       data: data,
       success: function(response){
-        authService.accessToken = response;
+        authService.accessToken = response.access_token;
+        authService.refreshToken = response.refresh_token;
+        authService.expiresIn;
       },
       dataType: "json"
     });
@@ -58,5 +62,28 @@ var authService = {
     var code = halves[halves.length-1];
     
     return code;
+  },
+
+  renewAccessCode: function(){
+    var data = {
+      client_id: this.clientId,
+      client_secret: this.clientSecret,
+      redirect_uri: this.redirectUri,
+      grant_type: "refresh_token",
+      refresh_token: authService.refreshToken
+    };
+
+    $.ajax({
+      type: "POST",
+      url: authService.tokenEndPoint,
+      data: data,
+      success: function(response){
+        authService.accessToken = response.access_token;
+        authService.refreshToken = response.refresh_token;
+        authService.expiresIn;
+      },
+      dataType: "json"
+    });
   }
+
 };

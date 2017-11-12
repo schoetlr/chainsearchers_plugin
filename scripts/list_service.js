@@ -2,11 +2,35 @@ var listService = {
 
   links: [],
 
-  postCurrentList: function(){
+  title: "",
 
+  description: "",
+
+  postToWall: false,
+
+  selectedTags: [],
+
+  postCurrentList: function(accessToken){
+    var data = {};
+    var header = "Bearer " + accessToken;
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/lists",
+      data: data,
+      success: function(response){
+        
+      },
+      dataType: "json",
+
+      headers: {
+        "Authorization": header
+      }
+    });
 
   },
 
+  //this is to post a single link
   postToWall: function(){
 
   },
