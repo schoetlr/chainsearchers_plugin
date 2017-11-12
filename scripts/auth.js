@@ -54,12 +54,9 @@ var authService = {
 
 
   extractCode: function(url){
-    console.log("debug below");
-    console.log(url);
     var halves = url.split("code=");
-    foofoo = halves;
     var code = halves[halves.length-1];
-    alert(code);
+    
     return code;
   }
 };
