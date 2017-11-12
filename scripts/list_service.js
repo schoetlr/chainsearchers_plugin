@@ -1,6 +1,6 @@
 var listService = {
 
-  links: [];
+  links: [],
 
   postCurrentList: function(){
 
@@ -9,10 +9,20 @@ var listService = {
 
   postToWall: function(){
 
-  };
+  },
 
   addLink: function(link){
     listService.links.push(link);
+  },
+
+  //Link constructor
+  Link: function Link(url, description){
+    var link = {};
+
+    link.url = url;
+    link.description = description;
+
+    return link;
   }
 
 
@@ -22,13 +32,6 @@ var listService = {
 
 
 
-function Link(url, description){
-  var link = {};
 
-  link.url = url;
-  link.description = description;
-
-  return link;
-};
 
 

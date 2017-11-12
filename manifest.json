@@ -8,9 +8,9 @@
    "browser_action":  { "default_popup": "popup.html" },
 
    "background": {
-      "scripts": ["auth.js", "list_service.js"],
+      "scripts": ["scripts/jquery.min.js", "scripts/auth.js", "scripts/list_service.js"],
       "persistent": true
-      
+
    },
-   "permissions": ["activeTab", "identity", "http://localhost:3000/oauth/authorize?client_id=:id&response_type=code&redirect_uri=:redirect_ui"]
+   "permissions": ["tabs", "identity", "http://localhost:3000/oauth/authorize?client_id=:id&response_type=code&redirect_uri=:redirect_ui"]
 }
