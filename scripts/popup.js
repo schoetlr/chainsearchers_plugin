@@ -19,7 +19,7 @@ $("document").ready(function(){
   });
 
   $("#post-list-btn").click(function(){
-    listService.postCurrentList();
+    listService.postCurrentList(authService.accessToken);
   });
   
   $("#add-link-btn").click(function(){
@@ -79,6 +79,10 @@ $("document").ready(function(){
     $tag.removeClass("tag");
     listService.selectedTags.push($tag);
     $("#selected-tags").append($tag);
+  });
+
+  $(".selected-tag").click(function(event){
+
   });
   
 
