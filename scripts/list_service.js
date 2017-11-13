@@ -39,7 +39,7 @@ var listService = {
   postCurrentListAnon: function(){
     var data = listService.prepareListData();
     data.postToWall = false;
-    
+
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/api/lists.json",
@@ -59,7 +59,8 @@ var listService = {
   //this is to post a single link
   postToWall: function(link, accessToken){
     var header = "Bearer " + accessToken;
-    
+    link = JSON.stringify(link);
+
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/api/links.json",
@@ -77,7 +78,9 @@ var listService = {
     });
   },
 
+  //for anon links
   postToWallAnon: function(link){
+    link = JSON.stringify(link);
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/api/links.json",
@@ -90,14 +93,14 @@ var listService = {
       contentType: "application/json"
 
     });
-  };
+  },
 
   addLink: function(link){
     listService.links.push(link);
   },
 
   //Link constructor
-  Link: function Link(url, description){
+  Link: function(url, description){
     var link = {};
 
     link.url = url;

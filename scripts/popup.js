@@ -63,7 +63,8 @@ $("document").ready(function(){
     });
   });
 
-  $("post-wall-btn").click(function(){
+  $("#post-wall-btn").click(function(){
+    console.log("in click");
     var url = undefined;
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
       var url = tabs[0].url;
@@ -74,6 +75,7 @@ $("document").ready(function(){
       if(authService.userSignedIn()){
         listService.postToWall(linkData, authService.accessToken);
       } else {
+        console.log("right brnach");
         listService.postToWallAnon(linkData);
       };
       
