@@ -60,6 +60,11 @@ $("document").ready(function(){
       var description = $("#link-description").val();
       var link = Link(url, description);
       listService.addLink(link);
+
+      $("#checkmark").fadeIn(700);
+      setTimeout(function(){
+        $("#checkmark").fadeOut(700);
+      }, 3500);
     });
   });
 

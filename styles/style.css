@@ -22,6 +22,11 @@ body {
 
 #add-link-btn {
   margin-bottom: 15px;
+  display: inline-block;
+}
+
+#checkmark {
+  margin-left: 5px;
 }
 
 #post-wall-btn {
