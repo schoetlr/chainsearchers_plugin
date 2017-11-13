@@ -16,6 +16,10 @@ body {
   margin-bottom: 10px;
 }
 
+#logout-link {
+  cursor: pointer;
+}
+
 #add-link-btn {
   margin-bottom: 15px;
 }

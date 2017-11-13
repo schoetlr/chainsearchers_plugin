@@ -16,10 +16,16 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="not-signed-in">
       <div class="col-xs-12">
         <button class="btn-primary btn-md center-block btn" id="sign-in-btn">Sign in</button>
         <p id="sign-in-description" class="text-center text-warning">If you don't sign in your lists and links will be published anonymously</p>
+      </div>
+    </div>
+
+    <div class="row" id="signed-in">
+      <div class="col-xs-12">
+        <p id="logout-link" class="text-center text-warning">Logout</p>
       </div>
     </div>
 
@@ -39,7 +45,7 @@
 
           <div class="form-group">
             <ul id="selected-tags">
-              
+
             </ul>
           </div>
 
@@ -53,10 +59,12 @@
           <div class="form-group">
             <label>Add links to your wall?</label>
             <input id="wall-post" class="form-check-input" type="checkbox" value=true>
+            <button class="btn-sm btn btn-danger" id="list-reset-btn">Reset List</button>
           </div>
 
           <div class="form-group">
-            <button class="btn-success btn-md btn" id="post-list-btn">Post List to Chainsearchers</button><br>
+            <button class="btn-success btn-md btn" id="post-list-btn">Post List to Chainsearchers</button>
+            <br>
             <p class="text-danger">Don't submit your list until you are done adding links</p>
           </div>
         </form>

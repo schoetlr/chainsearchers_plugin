@@ -50,7 +50,9 @@ var authService = {
       success: function(response){
         authService.accessToken = response.access_token;
         authService.refreshToken = response.refresh_token;
-        authService.expiresIn;
+        authService.expiresIn = response.expires_in;
+        authService.updateSession();
+        authService.tokenCountDown();
       },
       dataType: "json"
     });
@@ -80,10 +82,36 @@ var authService = {
       success: function(response){
         authService.accessToken = response.access_token;
         authService.refreshToken = response.refresh_token;
-        authService.expiresIn;
+        authService.expiresIn = response.expires_in;
+        authService.updateSession();
+        authService.tokenCountDown();
       },
       dataType: "json"
     });
+  },
+
+  userSignedIn: function(){
+    return !!authService.accessToken;
+  },
+
+  updateSession: function(){
+    var currentView = chrome.extension.getViews({type:"popup"})[0].document;
+    var $view = $(currentView);
+
+    if(authService.userSignedIn()){
+      $view.find("#signed-in").show();
+      $view.find("#not-signed-in").hide();
+    } else {
+      $view.find("#signed-in").hide();
+      $view.find("#not-signed-in").show();
+    };
+  
+  },
+
+  tokenCountDown: function(){
+    setTimeOut(function(){
+      authService.renewAccessCode();
+    }, 7200000)
   }
 
 };

@@ -14,15 +14,34 @@ $("document").ready(function(){
   tagService.populateTags($currentDoc);
 
   //put persistent form data back
-  $("#list-title").val(listService.title);
-  $("#list-description").val(listService.description);
-  listService.selectedTags.forEach(function($tag){
-    $("#selected-tags").append($tag);
-  });
+  function updateDOM(){
+    $("#list-title").val(listService.title);
+    $("#list-description").val(listService.description);
+    listService.selectedTags.forEach(function($tag){
+      $("#selected-tags").append($tag);
+    });
+    if(listService.postToWall){
+      $("#wall-post").prop("checked", true);
+    } else {
+      $("#wall-post").prop("checked", false);
+    };
+    
+  };
+
+  updateDOM();
+
+  
+
+  authService.updateSession();
 
   //set up listeners
   $("#sign-in-btn").click(function(){
     authService.requestGrant();
+  });
+
+  $("#logout-link").click(function(){
+    authService.accessToken = undefined;
+    authService.updateSession();
   });
 
   $("#post-list-btn").click(function(){
@@ -52,6 +71,11 @@ $("document").ready(function(){
     
   });
 
+  $("#list-reset-btn").click(function(){
+    listService.resetList();
+    updateDOM();
+  });
+
   $("#list-title").keyup(function(){
     listService.title = $("#list-title").val();
   });
@@ -60,7 +84,7 @@ $("document").ready(function(){
     listService.description = $("#list-description").val();
   });
 
-  $("#wall-post").keyup(function(){
+  $("#wall-post").click(function(){
     listService.postToWall = $("#wall-post").val();
   });
 

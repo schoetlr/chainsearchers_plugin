@@ -6,7 +6,7 @@ var listService = {
 
   description: "",
 
-  postToWall: false,
+  postToWall: true,
 
   selectedTags: [],
 
@@ -74,6 +74,7 @@ var listService = {
     listService.links = [];
     listService.title = "";
     listService.description = "";
+    listService.postToWall = true;
   },
 
   prepareListData: function(){
