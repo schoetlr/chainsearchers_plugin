@@ -44,13 +44,25 @@ $("document").ready(function(){
     authService.updateSession();
   });
 
-  $("#post-list-btn").click(function(){
-    if(authService.userSignedIn()){
-      listService.postCurrentList(authService.accessToken);
-    } else {
-      listService.postCurrentListAnon();
+  function invalidInput(){
+    if($("#list-title").val().length === 0){
+      return true;
     };
-    
+  };
+
+  $("#post-list-btn").click(function(event){
+    if(invalidInput()){
+      event.preventDefault();
+      $("#invalid-title").show();
+      
+    } else {
+
+      if(authService.userSignedIn()){
+        listService.postCurrentList(authService.accessToken);
+      } else {
+        listService.postCurrentListAnon();
+      };
+    };
   });
   
   $("#add-link-btn").click(function(){
@@ -96,7 +108,12 @@ $("document").ready(function(){
   });
 
   $("#list-title").keyup(function(){
-    listService.title = $("#list-title").val();
+    $titleInput = $("#list-title");
+    listService.title = $titleInput.val();
+    
+    if($titleInput.val().length > 0){
+      $("#invalid-title").hide();
+    };
   });
 
   $("#list-description").keyup(function(){
