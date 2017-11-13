@@ -110,6 +110,8 @@ var authService = {
 
   tokenCountDown: function(){
     setTimeOut(function(){
+      authService.accessToken = undefined;
+      authService.updateSession();
       authService.renewAccessCode();
     }, 7200000)
   }
