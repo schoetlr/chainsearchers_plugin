@@ -45,7 +45,12 @@ $("document").ready(function(){
   });
 
   $("#post-list-btn").click(function(){
-    listService.postCurrentList(authService.accessToken);
+    if(authService.userSignedIn()){
+      listService.postCurrentList(authService.accessToken);
+    } else {
+      listService.postCurrentListAnon();
+    };
+    
   });
   
   $("#add-link-btn").click(function(){
@@ -64,8 +69,15 @@ $("document").ready(function(){
       var url = tabs[0].url;
       var description = $("#wall-link-description").val();
       var link = Link(url, description);
+      var linkData = { link: link };
 
-      listService.postToWall(link);
+      if(authService.userSignedIn()){
+        listService.postToWall(linkData, authService.accessToken);
+      } else {
+        listService.postToWallAnon(linkData);
+      };
+      
+      $("#wall-link-description").val("");
 
     });
     

@@ -15,7 +15,7 @@ var listService = {
     var data = listService.prepareListData();
 
     var header = "Bearer " + accessToken;
-    console.log(data);
+    
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/api/lists.json",
@@ -36,10 +36,61 @@ var listService = {
 
   },
 
-  //this is to post a single link
-  postToWall: function(){
+  postCurrentListAnon: function(){
+    var data = listService.prepareListData();
+    data.postToWall = false;
+    
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/api/lists.json",
+      data: data,
+      success: function(response){
+        console.log("post was successful");
+        //reset data
+        listService.resetList();
+      },
+      dataType: "json",
 
+      contentType: "application/json"
+
+    });
   },
+
+  //this is to post a single link
+  postToWall: function(link, accessToken){
+    var header = "Bearer " + accessToken;
+    
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/api/links.json",
+      data: link,
+      success: function(response){
+        
+      },
+      dataType: "json",
+
+      contentType: "application/json",
+
+      headers: {
+        "Authorization": header
+      }
+    });
+  },
+
+  postToWallAnon: function(link){
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/api/links.json",
+      data: link,
+      success: function(response){
+        
+      },
+      dataType: "json",
+
+      contentType: "application/json"
+
+    });
+  };
 
   addLink: function(link){
     listService.links.push(link);
@@ -85,6 +136,7 @@ var listService = {
     data.list = listData;
     data.selectedTags = tags;
     data.links = listService.links;
+    data.postToWall = listService.postToWall;
 
     return JSON.stringify(data);
   }
