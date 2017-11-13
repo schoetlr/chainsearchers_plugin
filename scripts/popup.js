@@ -12,7 +12,14 @@ $("document").ready(function(){
 
   //populate the tag list
   tagService.populateTags($currentDoc);
-  
+
+  //put persistent form data back
+  $("#list-title").val(listService.title);
+  $("#list-description").val(listService.description);
+  listService.selectedTags.forEach(function($tag){
+    $("#selected-tags").append($tag);
+  });
+
   //set up listeners
   $("#sign-in-btn").click(function(){
     authService.requestGrant();

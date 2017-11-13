@@ -18,12 +18,12 @@ var listService = {
     console.log(data);
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/lists.json",
+      url: "http://localhost:3000/api/lists.json",
       data: data,
       success: function(response){
         console.log("post was successful");
         //reset data
-        //listService.resetList();
+        listService.resetList();
       },
       dataType: "json",
 
