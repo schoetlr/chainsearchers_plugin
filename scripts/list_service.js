@@ -142,6 +142,23 @@ var listService = {
     data.postToWall = listService.postToWall;
 
     return JSON.stringify(data);
+  },
+
+  userLists: undefined,
+
+  getLists: function(){
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:3000/api/lists.json",
+      
+      success: function(response){
+        listService.userLists = response;
+      },
+      dataType: "json",
+
+      contentType: "application/json"
+
+    });
   }
 
 
