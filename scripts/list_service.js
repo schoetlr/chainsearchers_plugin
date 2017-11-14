@@ -146,18 +146,70 @@ var listService = {
 
   userLists: undefined,
 
+  updateStatus: false,
+
+  updatableList: undefined,
+
   getLists: function(){
+    var header = "Bearer " + authService.accessToken;
+
     $.ajax({
       type: "GET",
       url: "http://localhost:3000/api/lists.json",
       
       success: function(response){
         listService.userLists = response;
+        listService.populateUserLists();
       },
       dataType: "json",
 
-      contentType: "application/json"
+      contentType: "application/json",
 
+      headers: {
+        "Authorization": header
+      }
+
+    });
+  },
+
+  updateList: function(accessToken){
+    //prepare the data
+    var data = listService.prepareListData();
+    var data.id = listService.updatableList.id;
+    var header = "Bearer " + accessToken;
+    
+    var requestUrl = "http://localhost:3000/api/lists.json";
+    $.ajax({
+      type: "POST",
+      url: requestUrl,
+      data: data,
+      success: function(response){
+        console.log("post was successful");
+        //reset data
+        listService.resetList();
+      },
+      dataType: "json",
+
+      contentType: "application/json",
+
+      headers: {
+        "Authorization": header
+      }
+    });
+  },
+
+  populateUserLists: function(){
+    var currentView = chrome.extension.getViews({type:"popup"})[0].document;
+    var $view = $(currentView);
+
+    listService.userLists.forEach(function(list){
+      var $list = $("<li></li>");
+      $list.text(list.title);
+      $list.attr("data-id", list.id);
+      $list.attr("data-desc", list.description);
+      $list.addClass("user-list");
+
+      $view.find("#user-lists").append($list);
     });
   }
 

@@ -34,13 +34,28 @@
         <!-- List form -->
         <form>
           <div class="form-group">
-            <label>List title</label><span class="text-danger" id="invalid-title" style="display: none">Required</span><br>
-            <input class="form-control" id="list-title">
+            <label>Update Existing List</label><input type="checkbox" id="update-list-check" class="form-check-input" value=true>
+          </div>
+          <div id="new-list-wrapper">
+            <div class="form-group">
+              <label>List title</label><span class="text-danger" id="invalid-title" style="display: none">Required</span><br>
+              <input class="form-control" id="list-title">
+            </div>
+
+            <div class="form-group">
+              <label>List description</label><br>
+              <input class="form-control" id="list-description">
+            </div>
           </div>
 
-          <div class="form-group">
-            <label>List description</label><br>
-            <input class="form-control" id="list-description">
+          <div id="update-list-wrapper" style="display: none">
+            <div class="form-group">
+              <input placeholder="search your lists" id="list-filter" class="form-control">
+              <ul id="user-lists">
+
+              </ul>
+            </div>
+
           </div>
 
           <div class="form-group">

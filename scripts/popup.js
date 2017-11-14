@@ -58,7 +58,12 @@ $("document").ready(function(){
     } else {
 
       if(authService.userSignedIn()){
-        listService.postCurrentList(authService.accessToken);
+        if(listService.updateStatus){
+          listService.updateList();
+        } else {
+          listService.postCurrentList(authService.accessToken);
+        };
+        
       } else {
         listService.postCurrentListAnon();
       };
@@ -124,6 +129,7 @@ $("document").ready(function(){
     listService.postToWall = $("#wall-post").val();
   });
 
+
   //filter the tag list
   $("#tag-search").keyup(function(event){
     $(".tag").each(function(i, tag){
@@ -150,6 +156,61 @@ $("document").ready(function(){
 
   $(".selected-tag").click(function(event){
 
+  });
+
+
+   //update list stuff
+
+   function toggleListSections(){
+     $newListWrapper = $("#new-list-wrapper");
+     $updateListWrapper = $("#update-list-wrapper");
+     $newListWrapper.toggle();
+     $updateListWrapper.toggle();
+   };
+
+  $("#update-list-check").click(function(){
+    toggleListSections();
+
+    var checked = $("update-list-check").is(':checked');
+
+    if(checked){
+      listService.updateStatus = true;
+    } else {
+      listService.updateStatus = false;
+      listService.updatableList = undefined;
+      listService.title = "";
+      listService.description = "";
+      updateDOM();
+    };
+  });
+
+
+
+  $("#list-filter").keyup(function(event){
+    $(".user-list").each(function(i, list){
+      var $list = $(list);
+      var search = $(event.target).val().toLowerCase();
+      var listTitle = $list.text();
+
+      if(listTitle.includes(search)){
+        $list.show();
+      } else {
+        $list.hide();
+      };
+    })
+  });
+
+  $(".user-list").click(function(event){
+    //track in listService
+    $list = $(event.target);
+    var id = $list.attr("data-id");
+    var desc = $list.attr("data-desc");
+    var title = $list.text();
+    listService.updatableList = {id: id, title: title};
+    listService.title = title;
+    listService.description = desc;
+    toggleListSections();
+    updateDOM();
   });
   
 

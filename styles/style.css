@@ -33,6 +33,7 @@ body {
   margin-bottom: 15px;
 }
 
+/* tag section */
 
 #tags {
   height: 80px;
@@ -55,6 +56,20 @@ body {
   cursor: pointer;
 }
 
+/* invalid title notice */
+
 #invalid-title {
+  margin-left: 5px;
+}
+
+/* update list section */
+#user-lists {
+  list-style: none;
+  height: 80px;
+  overflow: scroll;
+}
+
+
+#update-list-check {
   margin-left: 5px;
 }

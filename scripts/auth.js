@@ -52,6 +52,7 @@ var authService = {
         authService.refreshToken = response.refresh_token;
         authService.expiresIn = response.expires_in;
         authService.updateSession();
+        listService.getLists();
         authService.tokenCountDown();
       },
       dataType: "json"
