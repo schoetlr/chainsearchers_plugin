@@ -129,6 +129,8 @@ var listService = {
     listService.title = "";
     listService.description = "";
     listService.postToWall = true;
+    listService.updateStatus = false;
+    listService.updatableListID = undefined;
   },
 
   prepareListData: function(){

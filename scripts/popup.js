@@ -186,12 +186,12 @@ $("document").ready(function(){
    };
 
   $("#update-list-check:checkbox").change(function(){
-    toggleListSections();
 
     var checked = $("#update-list-check").is(':checked');
     
     if(checked){
       listService.updateStatus = true;
+      toggleListSections();
     } else {
       listService.updateStatus = false;
       listService.updatableList = undefined;
