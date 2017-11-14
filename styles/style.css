@@ -72,4 +72,5 @@ body {
 
 #update-list-check {
   margin-left: 5px;
+  cursor: pointer;
 }

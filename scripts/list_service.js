@@ -144,11 +144,25 @@ var listService = {
     return JSON.stringify(data);
   },
 
-  userLists: undefined,
+  prepareListUpdateData: function(){
+    var tags = listService.prepareTags();
+    var listData = { title: listService.title, description: listService.description};
+
+    var data = {};
+    data.list = listData;
+    data.selectedTags = tags;
+    data.links = listService.links;
+    data.postToWall = listService.postToWall;
+    data.id = listService.updatableListID;
+
+    return JSON.stringify(data);
+  },
+
+  userLists: [],
 
   updateStatus: false,
 
-  updatableList: undefined,
+  updatableListID: undefined,
 
   getLists: function(){
     var header = "Bearer " + authService.accessToken;
@@ -174,13 +188,13 @@ var listService = {
 
   updateList: function(){
     //prepare the data
-    var data = listService.prepareListData();
-    data.id = listService.updatableList.id;
+    var data = listService.prepareListUpdateData();
+    
     var header = "Bearer " + authService.accessToken;
 
-    var requestUrl = "http://localhost:3000/api/lists/"+data.id+".json";
+    var requestUrl = "http://localhost:3000/api/lists/"+listService.updatableListID+".json";
     $.ajax({
-      type: "POST",
+      type: "PUT",
       url: requestUrl,
       data: data,
       success: function(response){

@@ -12,7 +12,8 @@ $("document").ready(function(){
 
   //populate the tag list
   tagService.populateTags($currentDoc);
-
+  //populate the user lists
+  listService.populateUserLists();
   //put persistent form data back
   function updateDOM(){
     $("#list-title").val(listService.title);
@@ -25,11 +26,27 @@ $("document").ready(function(){
     } else {
       $("#wall-post").prop("checked", false);
     };
+
+    // $checkbox = $("#update-list-check");
+    // if(listService.updateStatus){
+    //   $checkbox.prop("checked", true);
+    // } else {
+    //   $checkbox.prop("checked", false);
+    // };
     
   };
 
-  updateDOM();
+  function displayUpdateBox(){
+    $checkbox = $("#update-list-check");
+    if(listService.updateStatus){
+      $checkbox.prop("checked", true);
+    } else {
+      $checkbox.prop("checked", false);
+    };
+  };
 
+  updateDOM();
+  displayUpdateBox();
   
 
   authService.updateSession();
@@ -168,11 +185,11 @@ $("document").ready(function(){
      $updateListWrapper.toggle();
    };
 
-  $("#update-list-check").click(function(){
+  $("#update-list-check:checkbox").change(function(){
     toggleListSections();
 
-    var checked = $("update-list-check").is(':checked');
-
+    var checked = $("#update-list-check").is(':checked');
+    
     if(checked){
       listService.updateStatus = true;
     } else {
@@ -180,6 +197,7 @@ $("document").ready(function(){
       listService.updatableList = undefined;
       listService.title = "";
       listService.description = "";
+      toggleListSections();
       updateDOM();
     };
   });
@@ -200,14 +218,14 @@ $("document").ready(function(){
     })
   });
 
-  $(".user-list").on("click", function(event){
+
+  $("body").on("click", ".user-list", function(event){
     //track in listService
-    console.log("nnnn");
     $list = $(event.target);
     var id = $list.attr("data-id");
     var desc = $list.attr("data-desc");
     var title = $list.text();
-    listService.updatableList = {id: id, title: title};
+    listService.updatableListID = id;
     listService.title = title;
     listService.description = desc;
     toggleListSections();
