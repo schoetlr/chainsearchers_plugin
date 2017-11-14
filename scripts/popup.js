@@ -27,15 +27,9 @@ $("document").ready(function(){
       $("#wall-post").prop("checked", false);
     };
 
-    // $checkbox = $("#update-list-check");
-    // if(listService.updateStatus){
-    //   $checkbox.prop("checked", true);
-    // } else {
-    //   $checkbox.prop("checked", false);
-    // };
     
   };
-
+  //can probably put this in updateDOM
   function displayUpdateBox(){
     $checkbox = $("#update-list-check");
     if(listService.updateStatus){
@@ -103,7 +97,7 @@ $("document").ready(function(){
   });
 
   $("#post-wall-btn").click(function(){
-    console.log("in click");
+    
     var url = undefined;
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
       var url = tabs[0].url;
@@ -114,7 +108,7 @@ $("document").ready(function(){
       if(authService.userSignedIn()){
         listService.postToWall(linkData, authService.accessToken);
       } else {
-        console.log("right brnach");
+        
         listService.postToWallAnon(linkData);
       };
       
@@ -146,21 +140,49 @@ $("document").ready(function(){
     listService.postToWall = $("#wall-post").val();
   });
 
+  //prevent default behavior for hitting enter on the form
+  $("form").on("keyup keypress", function(event){
+    var code = event.keyCode || event.which;
+    if(code === 13){
+      event.preventDefault();
+      return false;
+    };
+  });
 
   //filter the tag list
   $("#tag-search").keyup(function(event){
-    $(".tag").each(function(i, tag){
-      var $tag = $(tag);
-      var search = $(event.target).val().toLowerCase();
-      var tagTxt = $tag.text().toLowerCase();
-      
-      if(tagTxt.includes(search)){
-        $tag.show();
-      } else {
-        $tag.hide();
-      };
-    });
+    var code = event.keyCode || event.which;
+    if(code !== 13){
+      $(".tag").each(function(i, tag){
+        var $tag = $(tag);
+        var search = $(event.target).val().toLowerCase();
+        var tagTxt = $tag.text().toLowerCase();
+        
+        if(tagTxt.includes(search)){
+          $tag.show();
+        } else {
+          $tag.hide();
+        };
+      });
+    } else {
+      handleTagSubmission(event);
+    };
   });
+
+
+  function handleTagSubmission(event){
+    console.log("handling");
+    var $tag = $("<li></li>");
+    $tag.text($(event.target).val());
+    $tag.attr("data-id", undefined);
+    $tag.addClass("selected-tag");
+    listService.selectedTags.push($tag);
+    //add to view
+    updateDOM();
+    $("#tag-search").val("");
+    
+  };
+
 
   //add to selected tags
   $(".tag").click(function(event){
