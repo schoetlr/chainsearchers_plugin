@@ -118,7 +118,7 @@ var listService = {
 
       var tag = { name: name, id: id };
       tags.push(tag);
-    })
+    });
 
     return tags;
   },
@@ -172,13 +172,13 @@ var listService = {
     });
   },
 
-  updateList: function(accessToken){
+  updateList: function(){
     //prepare the data
     var data = listService.prepareListData();
-    var data.id = listService.updatableList.id;
-    var header = "Bearer " + accessToken;
-    
-    var requestUrl = "http://localhost:3000/api/lists.json";
+    data.id = listService.updatableList.id;
+    var header = "Bearer " + authService.accessToken;
+
+    var requestUrl = "http://localhost:3000/api/lists/"+data.id+".json";
     $.ajax({
       type: "POST",
       url: requestUrl,

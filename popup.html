@@ -16,14 +16,14 @@
       </div>
     </div>
 
-    <div class="row" id="not-signed-in">
+    <div class="row not-signed-in">
       <div class="col-xs-12">
         <button class="btn-primary btn-md center-block btn" id="sign-in-btn">Sign in</button>
         <p id="sign-in-description" class="text-center text-warning">If you don't sign in your lists and links will be published anonymously</p>
       </div>
     </div>
 
-    <div class="row" id="signed-in">
+    <div class="row" class="signed-in">
       <div class="col-xs-12">
         <p id="logout-link" class="text-center text-warning">Logout</p>
       </div>
@@ -33,7 +33,7 @@
       <div class="col-xs-4">
         <!-- List form -->
         <form>
-          <div class="form-group">
+          <div class="form-group signed-in">
             <label>Update Existing List</label><input type="checkbox" id="update-list-check" class="form-check-input" value=true>
           </div>
           <div id="new-list-wrapper">

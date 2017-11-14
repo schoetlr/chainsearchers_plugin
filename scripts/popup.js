@@ -200,8 +200,9 @@ $("document").ready(function(){
     })
   });
 
-  $(".user-list").click(function(event){
+  $(".user-list").on("click", function(event){
     //track in listService
+    console.log("nnnn");
     $list = $(event.target);
     var id = $list.attr("data-id");
     var desc = $list.attr("data-desc");

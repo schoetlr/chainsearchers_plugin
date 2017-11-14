@@ -96,15 +96,16 @@ var authService = {
   },
 
   updateSession: function(){
+    
     var currentView = chrome.extension.getViews({type:"popup"})[0].document;
     var $view = $(currentView);
 
     if(authService.userSignedIn()){
-      $view.find("#signed-in").show();
-      $view.find("#not-signed-in").hide();
+      $view.find(".signed-in").show();
+      $view.find(".not-signed-in").hide();
     } else {
-      $view.find("#signed-in").hide();
-      $view.find("#not-signed-in").show();
+      $view.find(".signed-in").hide();
+      $view.find(".not-signed-in").show();
     };
   
   },
