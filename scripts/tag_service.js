@@ -5,7 +5,7 @@ var tagService = {
   getTags: function(){
     $.ajax({
       type: "GET",
-      url: "http://localhost:3000/tags.json",
+      url: url.baseUrl+"/tags.json",
       
       success: function(response){
         tagService.tags = response[0].tags;

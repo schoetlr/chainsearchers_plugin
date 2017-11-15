@@ -6,7 +6,7 @@ var authService = {
   redirectUri: "https://modhaaboeefkahhijacfpadakhbigfjm.chromiumapp.org/oauth2",
 
   grantEndPoint: function(){
-    return "http://localhost:3000/oauth/authorize?client_id="+authService.clientId+"&response_type=code&redirect_uri="+authService.redirectUri;
+    return url.baseUrl+"/oauth/authorize?client_id="+authService.clientId+"&response_type=code&redirect_uri="+authService.redirectUri;
   },
 
   requestGrant: function(){
@@ -25,7 +25,7 @@ var authService = {
   
   },
 
-  tokenEndPoint: "http://localhost:3000/oauth/token",
+  tokenEndPoint: url.baseUrl+"/oauth/token",
 
   clientSecret: "49ac1fe681b57b9b816ef33dcff0e0876fc23886d5dfab0f036dc488e5dfe873",
 

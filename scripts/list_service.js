@@ -18,7 +18,7 @@ var listService = {
     
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/api/lists.json",
+      url: url.baseUrl + "/api/lists.json",
       data: data,
       success: function(response){
         console.log("post was successful");
@@ -42,7 +42,7 @@ var listService = {
 
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/api/lists.json",
+      url: url.baseUrl + "/api/lists.json",
       data: data,
       success: function(response){
         console.log("post was successful");
@@ -63,7 +63,7 @@ var listService = {
 
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/api/links.json",
+      url: url.baseUrl + "/api/links.json",
       data: link,
       success: function(response){
         
@@ -83,7 +83,7 @@ var listService = {
     link = JSON.stringify(link);
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/api/links.json",
+      url: url.baseUrl + "/api/links.json",
       data: link,
       success: function(response){
         
@@ -171,7 +171,7 @@ var listService = {
 
     $.ajax({
       type: "GET",
-      url: "http://localhost:3000/api/lists.json",
+      url: url.baseUrl + "/api/lists.json",
       
       success: function(response){
         listService.userLists = response;
@@ -194,7 +194,7 @@ var listService = {
     
     var header = "Bearer " + authService.accessToken;
 
-    var requestUrl = "http://localhost:3000/api/lists/"+listService.updatableListID+".json";
+    var requestUrl = url.baseUrl + "/api/lists/"+listService.updatableListID+".json";
     $.ajax({
       type: "PUT",
       url: requestUrl,
