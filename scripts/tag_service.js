@@ -1,6 +1,6 @@
 var tagService = {
 
-  tags: undefined,
+  tags: [],
 
   getTags: function(){
     $.ajax({
