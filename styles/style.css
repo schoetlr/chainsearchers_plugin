@@ -1,77 +1,124 @@
+      .PageWrapper{
+        width: 600px;
+        margin: 0 auto;
+      }
+      .ExtPage .form-control{
+        border-radius: 0px !important;
+        box-shadow: none !important;
+      }
+      .ExPageHeading{
+        background: #34495e;
+        padding: 10px;
+      }
+      .ExPageHeading h1{
+        margin: 0px;
+        padding:0px;
+        font-size: 20px;
+        color: #fff;
+        font-weight: 300;
+        line-height: 40px;
+      }
+      .ExPageBody{
+        padding: 10px;
+        background: #fff;
+      }
+      .text-red{
+        color: #f00;
+      }
+      .alert-danger{
+        background: #d8d8d8;
+        border: none;
+        border-radius: 0px;
+        color: #868686;
+        font-size: 12px;
+        padding: 10px;
+        position: relative;
+      }
+      .btn-success{
+        background: #27ae60;
+      }
+      .btn-primary{
+        background: #3498db;
+        border-color: #3498db;
+      }
+      .sm-top10{
+        margin-top: 10px;
+      }
+      .btn-block{
+        margin: 10px 0;
+      }
+      .btn{
+        border-radius: 0px;
+      }
+      .signed-in .btn{
+        color: #ffe400;
+        padding-right: 0px;
+      }
+      .signed-in .btn i{
+        position: relative;
+        top:2px;
+      }
+      .not-signed-in .btn{
+        color: #00ff53;
+        padding-right: 0px;
+        background: none;
+        border:0px;
+      }
+      .not-signed-in .btn i{
+        position: relative;
+        top:2px;
+      }
+      .MyList{
+        margin: 10px 0;
+        padding: 0px;
+        list-style: none;
+      }
+      .MyList li{
+        float: left;
+        padding: 3px 7px;
+        border:1px solid #eaeaea;
+        margin-right: 5px;
+        border-radius: 2px;
+      }
+      .MyList:after{
+        clear: both;
+        content: '';
+        display: block;
+      }
 
-body {
-  height: 600px;
-  width: 800px;
-}
-
-#main {
-  margin-top: 25px;
-}
-
-
-#title {
-  margin-bottom: 40px;
-}
-
-#sign-in-btn {
-  margin-bottom: 10px;
-}
-
-#logout-link {
-  cursor: pointer;
-}
-
-#add-link-btn {
-  margin-bottom: 15px;
-  display: inline-block;
-}
-
-#checkmark {
-  margin-left: 5px;
-}
-
-#post-wall-btn {
-  margin-bottom: 15px;
-}
-
-/* tag section */
-
-#tags {
-  height: 80px;
-  overflow: scroll;
-}
-
-.tag {
-  cursor: pointer;
-}
-
-#selected-tags {
-  list-style: none;
-  margin-left: -40px;
-}
-.selected-tag {
-  display: inline-block;
-  border-radius: 3px;
-  background-color: #e6e6e6;
-  margin-right: 3px;
-  cursor: pointer;
-}
-
-/* invalid title notice */
-
-#invalid-title {
-  margin-left: 5px;
-}
-
-/* update list section */
-#user-lists {
-  list-style: none;
-  height: 80px;
-  overflow: scroll;
-}
-
-
-#update-list-check {
-  margin-left: 5px;
-  cursor: pointer;
-}
+      .arrow-up:before{
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        color: #d8d8d8;
+        font-size: 18px;
+        margin-left: -16px;
+        width: 30px;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        content: "\e253";
+      }
+      .arrow-down:before{
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        color: #d8d8d8;
+        font-size: 18px;
+        margin-left: -16px;
+        width: 30px;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        content: "\e252";
+      }
+      .sm-bottom0{
+        margin-bottom: 0px;
+      }
+      .zmdi{
+          font-size: 16px;
+      }
