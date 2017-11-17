@@ -12,5 +12,10 @@
       "persistent": true
 
    },
-   "permissions": ["tabs", "identity", "http://localhost:3000/oauth/authorize?client_id=:id&response_type=code&redirect_uri=:redirect_ui"]
+   "permissions": ["tabs", 
+                  "identity", 
+                  "http://localhost:3000/oauth/authorize*",
+                  "http://localhost:3000/oauth/token*",
+                  "http://www.chainsearchers.com/oauth/authorize*",
+                  "http://www.chainsearchers.com/oauth/token*"]
 }
