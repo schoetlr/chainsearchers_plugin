@@ -73,6 +73,23 @@
         padding: 0px;
         list-style: none;
       }
+      .MyListDropdown{
+          padding: 0px;
+          list-style: none;
+          z-index: 9;
+          background: #fff;
+          width: 100%;
+          max-height: 100px;
+          position: absolute;
+          overflow-y: auto;
+      }
+      .MyListDropdown li{
+          padding: 6px 7px;
+          border: 1px solid #eaeaea;
+          border-bottom: none;
+          margin-right: 5px;
+          width: 100%;
+      }
       .MyList li{
         float: left;
         padding: 3px 7px;
@@ -87,34 +104,34 @@
       }
 
       .arrow-up:before{
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        color: #d8d8d8;
-        font-size: 18px;
-        margin-left: -16px;
-        width: 30px;
-        font-family: 'Glyphicons Halflings';
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        content: "\e253";
+          position: absolute;
+          top: -21px;
+          left: 50%;
+          color: #d8d8d8;
+          font-size: 37px;
+          margin-left: -16px;
+          width: 30px;
+          font-family: 'Material-Design-Iconic-Font';
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          content: '\f2f8';
       }
       .arrow-down:before{
-        position: absolute;
-        bottom: -12px;
-        left: 50%;
-        color: #d8d8d8;
-        font-size: 18px;
-        margin-left: -16px;
-        width: 30px;
-        font-family: 'Glyphicons Halflings';
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        content: "\e252";
+          position: absolute;
+          bottom: -23px;
+          left: 50%;
+          color: #d8d8d8;
+          font-size: 37px;
+          margin-left: -16px;
+          width: 30px;
+          font-family: 'Material-Design-Iconic-Font';
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          content: '\f2f2';
       }
       .sm-bottom0{
         margin-bottom: 0px;
@@ -122,3 +139,7 @@
       .zmdi{
           font-size: 16px;
       }
+        .form-group{
+            position: relative;
+        }
+

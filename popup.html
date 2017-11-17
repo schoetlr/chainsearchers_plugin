@@ -23,7 +23,7 @@
             <div class="not-signed-in text-right ">
               <button class="btn-default btn-md btn" id="sign-in-btn"><i class="zmdi zmdi-account"></i> Sign in</button>
             </div>
-            <div class="signed-in text-right">
+            <div class="signed-in  text-right hide">
               <button class="btn-link btn-md btn" id="logout-link"><i class="zmdi zmdi-power"></i> Logout </button>
             </div>
           </div>
@@ -58,11 +58,8 @@
               <div id="update-list-wrapper" style="display: none">
                 <div class="form-group">
                   <input placeholder="search your lists" id="list-filter" class="form-control">
-                  <ul id="user-lists" class="MyList">
-                    <!-- <li>test</li>
-                    <li>account</li>
-                    <li>info</li> -->
-                  </ul>
+                    <ul id="user-lists" class="MyListDropdown">
+                    </ul>
                 </div>
 
               </div>
@@ -73,7 +70,7 @@
 
                 </ul>
                 <input class="form-control" id="tag-search" placeholder="search for tags">
-                <ul id="tags">
+                <ul id="tags" class="MyListDropdown">
 
                 </ul>
               </div>
