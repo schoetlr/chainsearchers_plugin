@@ -1,7 +1,7 @@
 
 var authService = {
 
-  clientId: "8af3c5b8a1315e4e04964b43f174cfa57eb2c9cfd19206abd03a5e886b71ecb4",
+  clientId: "32e1aace2c30341bd32ef08751e4bfaec515dc1d668d29631de69403a502f403",
 
   redirectUri: "https://modhaaboeefkahhijacfpadakhbigfjm.chromiumapp.org/oauth2",
 
@@ -27,7 +27,7 @@ var authService = {
 
   tokenEndPoint: url.baseUrl+"/oauth/token",
 
-  clientSecret: "49ac1fe681b57b9b816ef33dcff0e0876fc23886d5dfab0f036dc488e5dfe873",
+  clientSecret: "46c714ae5a4d3e9dd1d35b6726a2c3fc35561cff42f9bf017abc32c9d3cd691e",
 
   //stores response from second request
   accessToken: undefined,
@@ -106,7 +106,7 @@ var authService = {
     } else {
       $view.find(".signed-in").hide();
       $view.find(".not-signed-in").show();
-    };
+    }
   
   },
 
@@ -115,7 +115,7 @@ var authService = {
       authService.accessToken = undefined;
       authService.updateSession();
       authService.renewAccessCode();
-    }, 7200000)
+    }, 7200000);
   }
 
 };
