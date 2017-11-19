@@ -193,7 +193,7 @@ $("document").ready(function(){
 
 
   //add to selected tags
-  $(".tag").click(function(event){
+  $("body").on("click", ".tag", function(event){
     $tag = $(event.target).clone();
     $tag.addClass("selected-tag");
     $tag.removeClass("tag");
@@ -201,8 +201,15 @@ $("document").ready(function(){
     $("#selected-tags").append($tag);
   });
 
-  $(".selected-tag").click(function(event){
-
+  $("body").on("click", ".selected-tag", function(event){
+    //alert(".selected-tag click r");
+    var $tag = $(event.target);
+    listService.selectedTags = listService.selectedTags.filter(function(tag){
+      return tag.text() !== $tag.text();
+    });
+    $tag.fadeOut(450, function(){
+      this.remove();
+    });
   });
 
 

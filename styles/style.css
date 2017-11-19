@@ -2,6 +2,10 @@
   display: none;
 }
 
+.selected-tag, .tag {
+  cursor: pointer;
+}
+
 .PageWrapper{
   width: 600px;
   margin: 0 auto;
