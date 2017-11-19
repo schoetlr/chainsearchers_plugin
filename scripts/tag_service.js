@@ -10,6 +10,10 @@ var tagService = {
       success: function(response){
         tagService.tags = response[0].tags;
       },
+
+      error: function(){
+        console.log("could not get tags");
+      },
       dataType: "json",
       
 

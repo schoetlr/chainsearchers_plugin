@@ -25,10 +25,10 @@ $("document").ready(function(){
       $("#wall-post").prop("checked", true);
     } else {
       $("#wall-post").prop("checked", false);
-    };
+    }
 
     
-  };
+  }
   //can probably put this in updateDOM
   function displayUpdateBox(){
     $checkbox = $("#update-list-check");
@@ -36,8 +36,8 @@ $("document").ready(function(){
       $checkbox.prop("checked", true);
     } else {
       $checkbox.prop("checked", false);
-    };
-  };
+    }
+  }
 
   updateDOM();
   displayUpdateBox();
@@ -58,8 +58,8 @@ $("document").ready(function(){
   function invalidInput(){
     if($("#list-title").val().length === 0){
       return true;
-    };
-  };
+    }
+  }
 
   $("#post-list-btn").click(function(event){
     if(invalidInput()){
@@ -73,12 +73,12 @@ $("document").ready(function(){
           listService.updateList();
         } else {
           listService.postCurrentList(authService.accessToken);
-        };
+        }
         
       } else {
         listService.postCurrentListAnon();
-      };
-    };
+      }
+    }
   });
   
   $("#add-link-btn").click(function(){
@@ -98,7 +98,6 @@ $("document").ready(function(){
 
   $("#post-wall-btn").click(function(){
     
-    var url = undefined;
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
       var url = tabs[0].url;
       var description = $("#wall-link-description").val();
@@ -110,7 +109,7 @@ $("document").ready(function(){
       } else {
         
         listService.postToWallAnon(linkData);
-      };
+      }
       
       $("#wall-link-description").val("");
 
@@ -129,7 +128,7 @@ $("document").ready(function(){
     
     if($titleInput.val().length > 0){
       $("#invalid-title").hide();
-    };
+    }
   });
 
   $("#list-description").keyup(function(){
@@ -146,7 +145,16 @@ $("document").ready(function(){
     if(code === 13){
       event.preventDefault();
       return false;
-    };
+    }
+  });
+
+  //show tags on focus 
+  $("#tag-search").focus(function(){
+    $("#tags").slideDown(500);
+  });
+
+  $("#tag-search").focusout(function(){
+    $("#tags").slideUp(500);
   });
 
   //filter the tag list
@@ -162,16 +170,16 @@ $("document").ready(function(){
           $tag.show();
         } else {
           $tag.hide();
-        };
+        }
       });
     } else {
       handleTagSubmission(event);
-    };
+    }
   });
 
 
   function handleTagSubmission(event){
-    console.log("handling");
+    
     var $tag = $("<li></li>");
     $tag.text($(event.target).val());
     $tag.attr("data-id", undefined);
@@ -181,7 +189,7 @@ $("document").ready(function(){
     updateDOM();
     $("#tag-search").val("");
     
-  };
+  }
 
 
   //add to selected tags
@@ -205,7 +213,7 @@ $("document").ready(function(){
      $updateListWrapper = $("#update-list-wrapper");
      $newListWrapper.toggle();
      $updateListWrapper.toggle();
-   };
+   }
 
   $("#update-list-check:checkbox").change(function(){
 
@@ -221,7 +229,7 @@ $("document").ready(function(){
       listService.description = "";
       toggleListSections();
       updateDOM();
-    };
+    }
   });
 
 
@@ -236,8 +244,8 @@ $("document").ready(function(){
         $list.show();
       } else {
         $list.hide();
-      };
-    })
+      }
+    });
   });
 
 
@@ -255,4 +263,4 @@ $("document").ready(function(){
   });
   
 
-})
+});
